@@ -5,7 +5,8 @@ function peco_select_history
     set peco_flags --layout=bottom-up --query "$argv"
   end
 
-  history --show-time='%y-%m-%d %H:%M> '|peco $peco_flags|sed -e "s/.\{16\}//"|read foo
+  history merge
+  history --show-time='%y-%m-%d %H:%M> ' | peco $peco_flags | sed -e "s/.\{16\}//"| read foo
 
   if [ $foo ]
     commandline $foo
